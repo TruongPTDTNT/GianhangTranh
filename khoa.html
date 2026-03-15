@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gian Hàng Tranh Đông Hồ - Khối 10 PTDTNT Lâm Đồng</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Import phông chữ Be Vietnam Pro - Phông chữ Sans-serif tốt nhất cho tiếng Việt */
+        @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+
+        :root {
+            --color-bamboo-dark: #4a2e15;
+            --color-paper: #f4ebd8;
+            --color-wood: #5c2a18;
+            --color-accent: #b91c1c; /* Đỏ son */
+            --color-gold: #d97706;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: subpixel-antialiased;
+            font-variant-ligatures: none; /* Quan trọng: Ngăn tách dấu chữ */
+            background-color: #1c1917;
+            margin: 0;
+            overflow-x: hidden;
+            color: #3a2a1a;
+        }
+
+        /* Lớp phủ vân giấy điệp cổ truyền */
+        .paper-texture::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/papyrus.png');
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        /* Khắc phục lỗi tách chữ bằng cách ép khoảng cách ký tự chuẩn */
+        h1, h2, h3, h4, p, span {
+            letter-spacing: -0.01em !important;
+            word-spacing: 0.02em !important;
+        }
+
+        .woven-pattern {
+            background-color: #d2aa70;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(101, 67, 33, 0.1) 15px, rgba(101, 67, 33, 0.1) 30px),
+                repeating-linear-gradient(-45deg, transparent, transparent 15px, rgba(101, 67, 33, 0.1) 15px, rgba(101, 67, 33, 0.1) 30px);
+            box-shadow: inset 0 0 150px rgba(0,0,0,0.4);
+        }
+
+        .bamboo-pole {
+            background: linear-gradient(to right, #6b4423, #b48a56, #6b4423);
+            box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+        }
+
+        .bamboo-joint {
+            border-bottom: 6px solid rgba(58, 26, 15, 0.6);
+            border-bottom-left-radius: 45%;
+            border-bottom-right-radius: 45%;
+            height: 120px;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(12, 10, 9, 0.96);
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .modal-overlay.active { display: flex; }
+
+        /* Hiệu ứng treo tranh */
+        .painting-card {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .painting-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .painting-card:hover {
+            transform: scale(1.03) rotate(1deg);
+            z-index: 20;
+        }
+
+        /* Chữ đầu phóng to (Drop Cap) nghệ thuật */
+        .drop-cap::first-letter {
+            float: left;
+            font-size: 5rem;
+            line-height: 0.7;
+            margin: 0.1em 0.1em 0 0;
+            color: var(--color-accent);
+            font-weight: 900;
+            font-style: italic;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+        }
+
+        .title-glow {
+            text-shadow: 0 0 20px rgba(217, 119, 6, 0.3), 3px 3px 0px #000;
+        }
+
+        /* Border kiểu tranh cổ */
+        .ancient-border {
+            border: 15px solid transparent;
+            border-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png') 30 round;
+            background: #e8dbce;
+        }
+    </style>
+</head>
+<body class="paper-texture">
+
+    <!-- Mái lá -->
+    <header class="relative z-30 w-full">
+        <div class="h-24 sm:h-32 bg-[#5c3a21] relative overflow-hidden border-b-8 border-[#3a2a1a]">
+            <div class="absolute inset-0 flex flex-wrap">
+                <script>
+                    for(let i=0; i<200; i++) {
+                        document.write(`<div class="w-[2px] h-full bg-[#3a2a1a]/40 mx-[1px] transform rotate-${i%2===0?6:12}"></div>`);
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="w-full h-10 sm:h-14 flex bg-[#5c3a21] -mt-1">
+            <script>
+                for(let i=0; i<45; i++) {
+                    document.write(`<div class="flex-1 bg-gradient-to-b from-[#5c3a21] to-[#8b5a2b] border-r border-[#3a1a0f] origin-top" style="clip-path: polygon(0 0, 100% 0, 50% 100%); transform: rotate(${(i % 5) * 2 - 4}deg) scaleY(${0.8 + (i % 3) * 0.2})"></div>`);
+                }
+            </script>
+        </div>
+        <div class="w-full h-6 bg-gradient-to-b from-yellow-600 via-yellow-400 to-yellow-700 border-y-2 border-yellow-900 shadow-2xl relative z-10 -mt-2"></div>
+    </header>
+
+    <!-- Thân gian hàng -->
+    <main class="w-full max-w-7xl mx-auto flex relative border-x-[12px] border-yellow-950 min-h-screen woven-pattern shadow-[0_0_100px_rgba(0,0,0,0.8)]">
+        
+        <!-- Cột tre trái -->
+        <aside class="absolute left-0 top-0 bottom-0 w-10 sm:w-20 bamboo-pole border-r-4 border-yellow-950 z-20">
+            <script>
+                for(let i=0; i<20; i++) document.write('<div class="bamboo-joint"></div>');
+            </script>
+        </aside>
+
+        <!-- Cột tre phải -->
+        <aside class="absolute right-0 top-0 bottom-0 w-10 sm:w-20 bamboo-pole border-l-4 border-yellow-950 z-20">
+            <script>
+                for(let i=0; i<20; i++) document.write('<div class="bamboo-joint"></div>');
+            </script>
+        </aside>
+
+        <!-- Nội dung chính -->
+        <section class="flex-1 px-12 sm:px-32 py-20 relative z-10 flex flex-col items-center">
+            
+            <!-- Biển hiệu -->
+            <div class="mb-24 transform -rotate-2 hover:rotate-0 transition-transform duration-500 cursor-default">
+                <div class="bg-[#4a1a0a] text-yellow-500 px-16 py-10 border-[10px] border-[#2a0a00] shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-sm ring-4 ring-yellow-700/30">
+                    <h1 class="text-4xl sm:text-6xl font-black uppercase tracking-tight m-0 text-center title-glow">
+                        Tranh Dân Gian Đông Hồ
+                    </h1>
+                    <div class="h-1 w-full bg-yellow-600/30 mt-4 rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Lưới tranh -->
+            <div id="painting-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 w-full max-w-6xl">
+                <!-- Nội dung render từ JS -->
+            </div>
+
+            <!-- Nhóm thực hiện -->
+            <footer class="mt-32 mb-12 p-10 bg-[#f4ebd8]/95 border-8 border-double border-[#4a2e15] rounded-2xl text-center max-w-3xl w-full shadow-2xl transform hover:scale-105 transition-transform">
+                <h4 class="text-red-900 font-bold text-xl mb-3 tracking-widest uppercase">Triển lãm văn hóa bởi:</h4>
+                <p class="text-[#3a1a0f] font-black text-3xl uppercase tracking-tighter leading-none">
+                    Khối 10 Trường PTDTNT Tỉnh Lâm Đồng
+                </p>
+                <div class="mt-4 flex justify-center gap-4 text-yellow-800 font-bold italic">
+                    <span>✦ Di sản ✦</span>
+                    <span>✦ Nghệ thuật ✦</span>
+                    <span>✦ Tự hào ✦</span>
+                </div>
+            </footer>
+        </section>
+    </main>
+
+    <!-- Chân gian hàng -->
+    <div class="w-full h-16 bg-[#0c0a09] border-t-4 border-yellow-900 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]"></div>
+
+    <!-- Modal Chi tiết -->
+    <div id="modal" class="modal-overlay" onclick="closeModal()">
+        <div class="bg-[#fdfbf7] w-full max-w-6xl flex flex-col md:flex-row overflow-hidden border-[16px] border-[#3a1a0f] shadow-2xl relative" onclick="event.stopPropagation()">
+            <button onclick="closeModal()" class="absolute top-6 right-6 bg-red-900 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-3xl border-4 border-yellow-600 shadow-2xl hover:bg-red-700 z-50 transition-transform hover:rotate-90">×</button>
+            
+            <!-- Phần ảnh -->
+            <div class="w-full md:w-3/5 bg-[#c8a165] p-12 flex items-center justify-center border-b-[12px] md:border-b-0 md:border-r-[12px] border-[#3a1a0f] relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 20px 20px;"></div>
+                <div class="relative p-6 bg-[#f4ebd8] border-[10px] border-[#2a1a0f] shadow-[0_30px_60px_rgba(0,0,0,0.4)] z-10 transform -rotate-1">
+                    <img id="modal-img" src="" alt="" class="max-w-full max-h-[65vh] object-contain mix-blend-multiply">
+                </div>
+            </div>
+
+            <!-- Phần chữ -->
+            <div class="w-full md:w-2/5 p-12 flex flex-col justify-center bg-[#fdfbf7] relative">
+                <span id="modal-cat" class="text-red-800 font-black text-sm uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                    <span class="w-8 h-[2px] bg-red-800"></span>
+                    Chi tiết tác phẩm
+                </span>
+                <h2 id="modal-title" class="text-5xl font-black text-[#1a0f05] mb-8 border-b-8 border-red-900/10 pb-6 uppercase leading-none tracking-tighter"></h2>
+                
+                <div class="text-xl text-[#4a2e15] leading-relaxed font-medium">
+                    <p id="modal-meaning" class="drop-cap"></p>
+                </div>
+
+                <div class="mt-12 pt-8 border-t-2 border-amber-900/20 flex flex-col gap-4">
+                    <div class="flex items-center gap-4 text-[#8b5a2b] font-black uppercase text-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                        <span>Chế tác bằng khuôn gỗ & giấy điệp</span>
+                    </div>
+                    <div class="flex items-center gap-4 text-[#8b5a2b] font-black uppercase text-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span>Sắc màu từ thiên nhiên (Sỏi, Lá, Gỗ)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const paintings = [
+            { id: 1, title: 'Đánh Ghen', image: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/%C4%90%C3%A1nh_ghen.JPG', cat: 'Tranh sinh hoạt', meaning: 'Khắc họa sinh động bi kịch của chế độ đa thê trong xã hội cũ qua nét vẽ hóm hỉnh, vừa châm biếm vừa nhắc nhở sự hài hòa trong gia đình.' },
+            { id: 2, title: 'Hứng Dừa', image: 'https://upload.wikimedia.org/wikipedia/commons/6/68/H%C3%A1i_d%E1%BB%ABa.JPG', cat: 'Tranh sinh hoạt', meaning: 'Ca ngợi vẻ đẹp lao động và sự gắn bó khăng khít của gia đình Việt xưa. Hình ảnh mẹ căng váy hứng dừa thể hiện sự đồng lòng, đùm bọc.' },
+            { id: 3, title: 'Bà Triệu', image: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhv9-dIBrolX-AcBmEv8Tm9iULxZ2BK6ftqCWXs4aC-R5DutN5hIg0Ifz36p6nMeByhyMkjk7DIsmAEIVSBzc4Pq-3FSJCldbI1t1swNFF_PrUmYCPNfmD32hfq5W_Q-_7mVMrt7IepKoRf/s1600/1.jpg', cat: 'Tranh lịch sử', meaning: 'Tôn vinh khí phách hiên ngang của nữ anh hùng dân tộc. Hình ảnh Bà cưỡi voi xông trận khẳng định sức mạnh và ý chí quật cường của phụ nữ Việt.' },
+            { id: 4, title: 'Gà Trống', image: 'https://imgs.vietnamnet.vn/Images/2017/01/20/19/20170120193230-a9.jpg?width=260&s=Ft22g6kPKQ04ulmFL3THDw', cat: 'Tranh chúc tụng', meaning: 'Gà trống là linh vật mang 5 đức tính: Văn (mào đỏ), Võ (cựa sắc), Dũng (vệ thủ), Nhân (kiếm mồi), Tín (gáy đúng giờ). Biểu tượng của may mắn.' },
+            { id: 5, title: 'Vinh Hoa', image: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Vinh_hoa.JPG', cat: 'Tranh chúc tụng', meaning: 'Hình ảnh em bé ôm gà trống tượng trưng cho mong ước sinh được quý tử, sau này lớn lên thành đạt, mang lại vinh hiển cho gia tộc.' },
+            { id: 6, title: 'Cá Chép', image: 'https://upload.wikimedia.org/wikipedia/commons/6/68/Tranh_%C4%90%C3%B4ng_H%E1%BB%93_-_C%C3%A1_ch%C3%A9p.jpg', cat: 'Tranh chúc tụng', meaning: 'Lý Ngư Vọng Nguyệt thể hiện ước nguyện về sự sung túc, thăng tiến. Cá chép còn là biểu tượng của sự kiên trì qua sự tích cá chép hóa rồng.' },
+            { id: 7, title: 'Trâu Sen', image: 'https://phapluat.tuoitrethudo.vn/stores/news_dataimages/phamhongmanh/022021/06/22/3938_Tranh_Dong_Ho.jpg?rt=20210206224211', cat: 'Tranh sinh hoạt', meaning: 'Bức tranh vẽ cảnh chú bé chăn trâu nằm thảnh thơi trên lưng trâu dưới lá sen rộng. Một biểu tượng tuyệt đẹp cho cảnh thái bình, thịnh trị.' },
+            { id: 8, title: 'Đám Cưới Chuột', image: 'https://media-cdn-v2.laodong.vn/storage/newsportal/2020/1/20/779763/Dam-Cuoi-Chuot.jpg?w=660', cat: 'Tranh trào phúng', meaning: 'Bức tranh nổi tiếng nhất châm biếm mối quan hệ giữa kẻ yếu và kẻ mạnh. Chuột muốn tổ chức đám cưới yên lành phải cống nạp lễ vật cho Mèo.' },
+            { id: 9, title: 'Lợn Âm Dương', image: 'https://upload.wikimedia.org/wikipedia/vi/7/7c/Tranh_L%E1%BB%A3n.PNG', cat: 'Tranh chúc tụng', meaning: 'Hình ảnh con lợn xoáy âm dương tượng trưng cho sự sinh sôi, nảy nở, mùa màng bội thu và mong ước một cuộc sống no đủ, giàu có.' }
+        ];
+
+        const grid = document.getElementById('painting-grid');
+
+        paintings.forEach((p, index) => {
+            const card = document.createElement('div');
+            card.className = "flex flex-col items-center group painting-card";
+            card.style.transitionDelay = `${index * 100}ms`;
+            card.innerHTML = `
+                <div class="absolute -top-12 w-1 h-14 bg-amber-900/60 z-0"></div>
+                <button onclick="openModal(${p.id})" class="relative z-10 p-5 ancient-border shadow-[0_20px_40px_rgba(0,0,0,0.3)] w-full">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-[#f4ebd8] flex items-center justify-center border-4 border-[#3a1a0f]/20">
+                        <img src="${p.image}" alt="${p.title}" class="object-contain w-full h-full mix-blend-multiply transition-transform duration-700 group-hover:scale-110" onerror="this.src='https://placehold.co/400x300/dcb883/4a2e15?text=Tranh+Đông+Hồ'">
+                        <div class="absolute inset-0 bg-red-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="bg-red-800 text-yellow-400 font-black px-6 py-2 border-2 border-yellow-600 shadow-2xl text-xs tracking-widest uppercase transform -rotate-3">Khám phá</div>
+                        </div>
+                    </div>
+                    <div class="mt-5 border-t-2 border-amber-950/20 pt-4">
+                        <h3 class="text-xl font-black text-[#1a0f05] uppercase tracking-tighter">${p.title}</h3>
+                    </div>
+                </button>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Hoạt ảnh hiện tranh khi cuộn
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.painting-card').forEach(card => observer.observe(card));
+
+        function openModal(id) {
+            const p = paintings.find(item => item.id === id);
+            document.getElementById('modal-img').src = p.image;
+            document.getElementById('modal-title').innerText = p.title;
+            document.getElementById('modal-cat').innerHTML = `<span class="w-8 h-[2px] bg-red-800"></span> ${p.cat}`;
+            document.getElementById('modal-meaning').innerText = p.meaning;
+            document.getElementById('modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
