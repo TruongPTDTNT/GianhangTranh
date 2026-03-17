@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Gian Hàng Tranh Đông Hồ - Khối 10 PTDTNT Lâm Đồng</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -19,57 +19,45 @@
 
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
-            background-color: #120e0a; /* Nền ngoài tối để nổi bật gian hàng */
+            background-color: #120e0a;
             margin: 0;
             overflow-x: hidden;
             color: #3a2a1a;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* Nền mành tre (Vách nhà) */
         .bamboo-mat-bg {
             background-color: #d1a86e;
             background-image: 
                 repeating-linear-gradient(to bottom, transparent, transparent 4px, rgba(0,0,0,0.1) 4px, rgba(0,0,0,0.1) 6px),
                 repeating-linear-gradient(to right, transparent, transparent 20px, rgba(139, 69, 19, 0.2) 20px, rgba(139, 69, 19, 0.2) 22px);
-            box-shadow: inset 0 0 150px rgba(0,0,0,0.8); /* Tối ở các góc */
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.7);
         }
 
-        /* Kết cấu Tre (Cột dọc & Đòn ngang) */
         .bamboo-v {
             background: linear-gradient(90deg, #5c3716 0%, #c29553 30%, #e3bc7d 50%, #c29553 70%, #3a200a 100%);
-            box-shadow: 10px 0 20px rgba(0,0,0,0.6), inset -2px 0 5px rgba(0,0,0,0.5);
+            box-shadow: 3px 0 10px rgba(0,0,0,0.5), inset -1px 0 2px rgba(0,0,0,0.4);
         }
         
         .bamboo-joint-v {
             width: 100%;
-            height: 4px;
+            height: 3px;
             background: rgba(45, 23, 11, 0.8);
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
-            margin-top: 120px;
+            margin-top: 60px;
         }
 
         .bamboo-h {
             background: linear-gradient(180deg, #3a200a 0%, #c29553 30%, #e3bc7d 50%, #c29553 70%, #1a0f05 100%);
-            box-shadow: 0 15px 25px rgba(0,0,0,0.8);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.7);
         }
 
-        .bamboo-joint-h {
-            height: 100%;
-            width: 4px;
-            background: rgba(45, 23, 11, 0.8);
-            border-right: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            display: inline-block;
-            margin-left: 150px;
-        }
-
-        /* Mái Tranh (Thatch Roof) */
         .thatch-roof-container {
             position: relative;
             z-index: 50;
             width: 100%;
-            filter: drop-shadow(0 20px 25px rgba(0,0,0,0.9));
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.9));
         }
 
         .thatch-layer {
@@ -77,96 +65,98 @@
             background-image: 
                 repeating-linear-gradient(75deg, transparent, transparent 3px, rgba(0,0,0,0.3) 3px, rgba(0,0,0,0.3) 6px),
                 repeating-linear-gradient(105deg, transparent, transparent 3px, rgba(227, 188, 125, 0.2) 3px, rgba(227, 188, 125, 0.2) 6px);
-            border-bottom: 8px solid #2d170b;
+            border-bottom: 4px solid #2d170b;
         }
 
-        /* Rìa mái lá lởm chởm */
         .thatch-fringe {
-            height: 30px;
+            height: 15px;
             background-image: 
                 linear-gradient(-45deg, transparent 75%, #3a2210 75%), 
                 linear-gradient(45deg, transparent 75%, #3a2210 75%);
-            background-size: 20px 30px;
+            background-size: 12px 15px;
             background-repeat: repeat-x;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
-        /* Dây thừng */
         .rope {
-            width: 4px;
+            width: 2px;
             background: repeating-linear-gradient(45deg, #5c3a21, #5c3a21 2px, #3a200a 2px, #3a200a 4px);
-            box-shadow: 2px 0 3px rgba(0,0,0,0.5);
+            box-shadow: 1px 0 1px rgba(0,0,0,0.4);
             z-index: 5;
         }
 
-        /* Thẻ tranh */
         .ancient-border {
-            border: 12px solid transparent;
+            border: 4px solid transparent;
             border-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png') 30 round;
             background: #e8dbce;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             position: relative;
             z-index: 10;
         }
 
-        /* Bảng hiệu gỗ */
+        @media (min-width: 640px) {
+            .ancient-border { border-width: 12px; }
+            .bamboo-joint-v { margin-top: 120px; }
+            .thatch-fringe { height: 20px; background-size: 15px 20px; }
+            .rope { width: 3px; }
+        }
+
         .wooden-sign {
             background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), linear-gradient(to bottom, #4a1a0a, #2a0a00);
-            border: 8px solid #1a0500;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 20px 30px rgba(0,0,0,0.7);
+            border: 3px solid #1a0500;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.7);
         }
 
-        .title-glow {
-            text-shadow: 0 0 10px rgba(255, 200, 0, 0.5), 3px 3px 0px #000;
+        @media (min-width: 640px) {
+            .wooden-sign { border-width: 8px; }
         }
 
-        /* Modal Styles */
+        /* Modal logic */
         .modal-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(0, 0, 0, 0.9);
             z-index: 100;
-            backdrop-filter: blur(10px);
-            padding: 10px;
+            backdrop-filter: blur(5px);
             align-items: center;
             justify-content: center;
-            animation: fadeIn 0.3s ease;
         }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .modal-overlay.active { display: flex; }
+        
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
         .modal-content-wrapper {
             position: relative;
             width: 100%;
-            max-width: 1100px;
-            max-height: 90vh;
+            height: 100%;
             background: #fdfbf7;
             overflow-y: auto;
-            border: 8px solid #3a1a0f;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
-        .close-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 200;
-            background: #b91c1c;
-            color: white;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
-            border: 3px solid #d97706;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            cursor: pointer;
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
+
+        @media (min-width: 768px) {
+            .modal-overlay { padding: 20px; }
+            .modal-content-wrapper { 
+                height: auto; 
+                max-height: 90vh; 
+                border: 8px solid #3a1a0f; 
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+                width: 90%;
+                max-width: 1000px;
+                border-radius: 4px;
+            }
+        }
+
         .drop-cap::first-letter {
             float: left;
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             line-height: 0.8;
             margin: 0.1em 0.1em 0 0;
             color: var(--color-accent);
@@ -176,91 +166,76 @@
 </head>
 <body>
 
-    <!-- MÁI TRANH (Thatch Roof) -->
     <header class="thatch-roof-container">
-        <!-- Lớp mái chính -->
-        <div class="w-full h-24 sm:h-40 thatch-layer relative overflow-hidden">
-            <!-- Hiệu ứng bóng đổ trên mái -->
+        <div class="w-full h-12 sm:h-32 thatch-layer relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
         </div>
-        <!-- Rìa mái lởm chởm -->
         <div class="w-full thatch-fringe"></div>
     </header>
 
-    <!-- GIAN NHÀ TRE (Bamboo Hut Structure) -->
     <main class="w-full max-w-7xl mx-auto relative min-h-screen">
-        
-        <!-- Nền Vách Nong Nia -->
-        <div class="absolute inset-0 bamboo-mat-bg z-0 border-x-[16px] border-[#1a0f05]"></div>
+        <div class="absolute inset-0 bamboo-mat-bg z-0 border-x-[6px] sm:border-x-[16px] border-[#1a0f05]"></div>
 
-        <!-- CỘT TRE DỌC (Trái & Phải) -->
-        <aside class="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bamboo-v z-20 overflow-hidden">
-            <script>for(let i=0; i<15; i++) document.write('<div class="bamboo-joint-v"></div>');</script>
+        <aside class="absolute left-0 top-0 bottom-0 w-3 sm:w-16 bamboo-v z-20 overflow-hidden">
+            <script>for(let i=0; i<40; i++) document.write('<div class="bamboo-joint-v"></div>');</script>
         </aside>
-        <aside class="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bamboo-v z-20 overflow-hidden">
-            <script>for(let i=0; i<15; i++) document.write('<div class="bamboo-joint-v"></div>');</script>
+        <aside class="absolute right-0 top-0 bottom-0 w-3 sm:w-16 bamboo-v z-20 overflow-hidden">
+            <script>for(let i=0; i<40; i++) document.write('<div class="bamboo-joint-v"></div>');</script>
         </aside>
 
-        <!-- ĐÒN TAY NGANG (Cột trên cùng chịu lực) -->
-        <div class="absolute top-0 left-0 right-0 h-10 sm:h-14 bamboo-h z-30 flex items-center overflow-hidden">
-             <script>for(let i=0; i<20; i++) document.write('<div class="bamboo-joint-h"></div>');</script>
+        <div class="absolute top-0 left-0 right-0 h-6 sm:h-12 bamboo-h z-30 flex items-center overflow-hidden">
+             <script>for(let i=0; i<30; i++) document.write('<div class="h-full w-[2px] bg-black/20 mx-8 sm:mx-20"></div>');</script>
         </div>
 
-        <!-- KHÔNG GIAN TRƯNG BÀY (Nội dung) -->
-        <section class="relative z-10 px-12 sm:px-24 pt-20 sm:pt-32 pb-20 flex flex-col items-center">
+        <section class="relative z-10 px-5 sm:px-24 pt-10 sm:pt-24 pb-16 flex flex-col items-center">
             
-            <!-- BIỂN HIỆU (Được treo bằng dây) -->
-            <div class="relative mb-16 sm:mb-28 flex flex-col items-center w-full max-w-2xl transform hover:scale-105 transition-transform duration-500">
-                <!-- Dây treo biển -->
-                <div class="absolute -top-20 sm:-top-32 left-[15%] h-20 sm:h-32 rope rotate-[-5deg] origin-top"></div>
-                <div class="absolute -top-20 sm:-top-32 right-[15%] h-20 sm:h-32 rope rotate-[5deg] origin-top"></div>
+            <div class="relative mb-8 sm:mb-20 flex flex-col items-center w-full max-w-lg">
+                <div class="absolute -top-10 sm:-top-24 left-[15%] h-10 sm:h-24 rope rotate-[-5deg] origin-top"></div>
+                <div class="absolute -top-10 sm:-top-24 right-[15%] h-10 sm:h-24 rope rotate-[5deg] origin-top"></div>
                 
-                <!-- Bảng gỗ -->
-                <div class="wooden-sign px-6 py-6 sm:px-16 sm:py-8 rounded-sm text-center w-full z-10 transform -rotate-2 relative">
-                    <!-- Đinh chốt dây -->
-                    <div class="absolute top-2 left-[15%] w-4 h-4 bg-black rounded-full shadow-sm"></div>
-                    <div class="absolute top-2 right-[15%] w-4 h-4 bg-black rounded-full shadow-sm"></div>
-
-                    <h1 class="text-3xl sm:text-6xl font-black uppercase tracking-widest text-[#facc15] title-glow leading-tight m-0">
-                        Tranh Dân Gian <br class="sm:hidden"> Đông Hồ
+                <div class="wooden-sign px-3 py-3 sm:px-12 sm:py-6 rounded-sm text-center w-full z-10 transform -rotate-1 relative">
+                    <h1 class="text-base sm:text-5xl font-black uppercase tracking-wider text-[#facc15] leading-tight m-0" style="text-shadow: 2px 2px 0 #000;">
+                        Di Sản Tranh <br> Đông Hồ
                     </h1>
                 </div>
             </div>
 
-            <!-- LƯỚI TRANH (Treo bằng dây) -->
-            <div id="painting-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24 gap-x-12 sm:gap-x-16 w-full max-w-6xl mt-4">
-                <!-- JS sẽ render card vào đây -->
+            <div id="painting-grid" class="grid grid-cols-3 gap-y-10 sm:gap-y-20 gap-x-2 sm:gap-x-12 w-full max-w-5xl mt-4">
+                <!-- Chèn bằng JS -->
             </div>
 
-            <!-- NHÓM THỰC HIỆN (Bảng nhỏ đặt dưới đất) -->
-            <footer class="mt-32 p-6 sm:p-10 bg-[#e8dbce] border-8 border-double border-[#4a2e15] rounded-sm text-center w-full max-w-3xl shadow-[0_20px_40px_rgba(0,0,0,0.8)] relative z-10 transform rotate-1">
-                <h4 class="text-red-900 font-bold text-sm sm:text-xl mb-2 tracking-widest uppercase">Nhóm Thực Hiện:</h4>
-                <p class="text-[#2d170b] font-black text-xl sm:text-4xl uppercase tracking-tighter leading-tight">
-                    Khối 10 Trường PTDTNT <br class="sm:hidden"> 
+            <footer class="mt-16 p-3 sm:p-8 bg-[#e8dbce] border-2 sm:border-8 border-double border-[#4a2e15] rounded-sm text-center w-full max-w-2xl shadow-xl relative z-10">
+                <h4 class="text-red-900 font-bold text-[8px] sm:text-lg mb-0 tracking-widest uppercase">Triển lãm văn hóa:</h4>
+                <p class="text-[#2d170b] font-black text-xs sm:text-3xl uppercase tracking-tighter leading-tight">
+                    Khối 10 Trường PTDTNT <br class="sm:hidden"> Tỉnh Lâm Đồng
                 </p>
             </footer>
         </section>
     </main>
 
-    <!-- Modal Chi tiết -->
+    <!-- Modal Cố định -->
     <div id="modal" class="modal-overlay" onclick="closeModal()">
         <div class="modal-content-wrapper" onclick="event.stopPropagation()">
-            <button onclick="closeModal()" class="close-button" aria-label="Đóng">✕</button>
+            <!-- Nút đóng -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-[110] bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold border-2 border-white shadow-lg">✕</button>
             
-            <div class="flex flex-col md:flex-row">
-                <div class="w-full md:w-3/5 bg-[#c8a165] p-6 sm:p-12 flex items-center justify-center border-b-[6px] md:border-b-0 md:border-r-[12px] border-[#3a1a0f] relative">
-                    <div class="relative p-3 sm:p-6 bg-[#f4ebd8] border-4 sm:border-[10px] border-[#2a1a0f] shadow-2xl">
-                        <img id="modal-img" src="" alt="" class="max-w-full max-h-[40vh] sm:max-h-[65vh] object-contain mix-blend-multiply">
+            <div class="flex flex-col md:flex-row min-h-full">
+                <!-- Khu vực ảnh -->
+                <div class="w-full md:w-3/5 bg-[#c8a165] p-6 sm:p-12 flex items-center justify-center border-b-[4px] md:border-b-0 md:border-r-[10px] border-[#3a1a0f] relative min-h-[40vh] md:min-h-0">
+                    <div class="relative p-2 sm:p-6 bg-[#f4ebd8] border-4 sm:border-[10px] border-[#2a1a0f] shadow-2xl">
+                        <img id="modal-img" src="" alt="" class="max-w-full max-h-[40vh] sm:max-h-[60vh] object-contain mix-blend-multiply">
                     </div>
                 </div>
-
-                <div class="w-full md:w-2/5 p-6 sm:p-12 flex flex-col justify-center bg-[#fdfbf7]">
-                    <span id="modal-cat" class="text-red-800 font-black text-xs sm:text-sm uppercase tracking-widest mb-2 flex items-center gap-2"></span>
-                    <h2 id="modal-title" class="text-3xl sm:text-5xl font-black text-[#1a0f05] mb-4 sm:mb-8 border-b-4 sm:border-b-8 border-red-900/10 pb-2 sm:pb-6 uppercase leading-tight"></h2>
-                    
-                    <div class="text-lg sm:text-xl text-[#4a2e15] leading-relaxed">
-                        <p id="modal-meaning" class="drop-cap"></p>
+                <!-- Khu vực nội dung văn bản -->
+                <div class="w-full md:w-2/5 p-6 sm:p-10 flex flex-col justify-center bg-[#fdfbf7]">
+                    <div id="modal-cat-box" class="mb-2">
+                        <span id="modal-cat" class="text-red-800 font-black text-[10px] sm:text-sm uppercase tracking-widest flex items-center gap-2"></span>
                     </div>
+                    <h2 id="modal-title" class="text-2xl sm:text-4xl font-black text-[#1a0f05] mb-4 sm:mb-6 border-b-2 sm:border-b-4 border-red-900/10 pb-2 sm:pb-4 uppercase leading-tight"></h2>
+                    <div class="text-sm sm:text-lg text-[#4a2e15] leading-relaxed mb-6">
+                        <p id="modal-meaning" class="drop-cap font-medium"></p>
+                    </div>
+                    <button onclick="closeModal()" class="md:hidden w-full py-3 bg-[#3a1a0f] text-[#facc15] font-bold uppercase text-xs tracking-widest rounded-sm">Quay lại gian hàng</button>
                 </div>
             </div>
         </div>
@@ -268,59 +243,60 @@
 
     <script>
         const paintings = [
-            { id: 1, title: 'Đánh Ghen', image: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/%C4%90%C3%A1nh_ghen.JPG', cat: 'Tranh sinh hoạt', meaning: 'Khắc họa sinh động bi kịch của chế độ đa thê trong xã hội cũ qua nét vẽ hóm hỉnh, vừa châm biếm vừa nhắc nhở sự hài hòa trong gia đình.' },
-            { id: 2, title: 'Hứng Dừa', image: 'https://upload.wikimedia.org/wikipedia/commons/6/68/H%C3%A1i_d%E1%BB%ABa.JPG', cat: 'Tranh sinh hoạt', meaning: 'Ca ngợi vẻ đẹp lao động và sự gắn bó khăng khít của gia đình Việt xưa. Hình ảnh mẹ căng váy hứng dừa thể hiện sự đồng lòng, đùm bọc.' },
-            { id: 3, title: 'Bà Triệu', image: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhv9-dIBrolX-AcBmEv8Tm9iULxZ2BK6ftqCWXs4aC-R5DutN5hIg0Ifz36p6nMeByhyMkjk7DIsmAEIVSBzc4Pq-3FSJCldbI1t1swNFF_PrUmYCPNfmD32hfq5W_Q-_7mVMrt7IepKoRf/s1600/1.jpg', cat: 'Tranh lịch sử', meaning: 'Tôn vinh khí phách hiên ngang của nữ anh hùng dân tộc. Hình ảnh Bà cưỡi voi xông trận khẳng định sức mạnh và ý chí quật cường của phụ nữ Việt.' },
-            { id: 4, title: 'Gà Trống', image: 'https://imgs.vietnamnet.vn/Images/2017/01/20/19/20170120193230-a9.jpg?width=260&s=Ft22g6kPKQ04ulmFL3THDw', cat: 'Tranh chúc tụng', meaning: 'Gà trống mang 5 đức tính: Văn, Võ, Dũng, Nhân, Tín. Đây là biểu tượng cho sự thịnh vượng và may mắn trong quan niệm dân gian.' },
-            { id: 5, title: 'Vinh Hoa', image: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Vinh_hoa.JPG', cat: 'Tranh chúc tụng', meaning: 'Hình ảnh em bé ôm gà trống tượng trưng cho mong ước sinh được quý tử khỏe mạnh, sau này lớn lên thành đạt, mang lại vinh hiển.' },
-            { id: 6, title: 'Cá Chép', image: 'https://upload.wikimedia.org/wikipedia/commons/6/68/Tranh_%C4%90%C3%B4ng_H%E1%BB%93_-_C%C3%A1_ch%C3%A9p.jpg', cat: 'Tranh chúc tụng', meaning: 'Lý Ngư Vọng Nguyệt thể hiện ước nguyện về sự sung túc, thanh cao. Cá chép còn là biểu tượng của sự kiên trì vượt khó.' },
-            { id: 7, title: 'Trâu Sen', image: 'https://phapluat.tuoitrethudo.vn/stores/news_dataimages/phamhongmanh/022021/06/22/3938_Tranh_Dong_Ho.jpg?rt=20210206224211', cat: 'Tranh sinh hoạt', meaning: 'Bức tranh vẽ cảnh chú bé chăn trâu nằm thảnh thơi trên lưng trâu dưới lá sen. Một biểu tượng của cuộc sống an nhiên, thái bình.' },
-            { id: 8, title: 'Đám Cưới Chuột', image: 'https://media-cdn-v2.laodong.vn/storage/newsportal/2020/1/20/779763/Dam-Cuoi-Chuot.jpg?w=660', cat: 'Tranh trào phúng', meaning: 'Bức tranh châm biếm mối quan hệ kẻ yếu - kẻ mạnh. Chuột muốn cưới phải cống nạp cho Mèo, phản ánh hiện thực xã hội xưa.' },
-            { id: 9, title: 'Lợn Âm Dương', image: 'https://upload.wikimedia.org/wikipedia/vi/7/7c/Tranh_L%E1%BB%A3n.PNG', cat: 'Tranh chúc tụng', meaning: 'Con lợn với xoáy âm dương tượng trưng cho sự sinh sôi, nảy nở, mùa màng bội thu và mong ước một cuộc sống no đủ.' }
+            { id: 1, title: 'Lợn Âm Dương', image: 'https://upload.wikimedia.org/wikipedia/vi/7/7c/Tranh_L%E1%BB%A3n.PNG', cat: 'Tranh chúc tụng', meaning: 'Con lợn với xoáy âm dương tượng trưng cho sự sinh sôi nảy nở, mong ước một cuộc sống no đủ, thịnh vượng và hòa hợp của nhà nông.' },
+            { id: 2, title: 'Lợn Đàn', image: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/08/tranh-dong-ho-2.jpg', cat: 'Tranh chúc tụng', meaning: 'Lợn mẹ cùng đàn con quây quản thể hiện khát vọng về một gia đình đông đúc, ấm no và sự phát triển bền vững truyền đời.' },
+            { id: 3, title: 'Gà Trống', image: 'https://imgs.vietnamnet.vn/Images/2017/01/20/19/20170120193230-a9.jpg?width=260&s=Ft22g6kPKQ04ulmFL3THDw', cat: 'Tranh chúc tụng', meaning: 'Gà trống mang 5 đức tính: Văn, Võ, Dũng, Nhân, Tín. Là biểu tượng của sự đại cát, xua tan tà ma và mang lại may mắn.' },
+            { id: 4, title: 'Gà Mẹ Con', image: 'https://upload.wikimedia.org/wikipedia/commons/8/84/S%C3%A2n_g%C3%A0.JPG', cat: 'Tranh chúc tụng', meaning: 'Tình mẫu tử thiêng liêng và lời chúc cho con cháu đầy đàn, gia đình hạnh phúc, đoàn kết.' },
+            { id: 5, title: 'Vinh Hoa', image: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Vinh_hoa.JPG', cat: 'Tranh chúc tụng', meaning: 'Em bé ôm gà trống (Vinh Hoa) mang ý nghĩa cầu chúc sinh được con trai thông minh, sau này lớn lên vinh hiển, thành đạt.' },
+            { id: 6, title: 'Cá Chép', image: 'https://upload.wikimedia.org/wikipedia/commons/6/68/Tranh_%C4%90%C3%B4ng_H%E1%BB%93_-_C%C3%A1_ch%C3%A9p.jpg', cat: 'Tranh chúc tụng', meaning: 'Lý Ngư Vọng Nguyệt (Cá chép trông trăng) thể hiện ước nguyện về sự sung túc, thanh cao và ý chí kiên trì vượt khó để thành công.' },
+            { id: 7, title: 'Cá Chậu', image: 'https://bizweb.dktcdn.net/100/438/304/files/tranh-giay-dong-ho-ca-chau-26x37cm.jpg?v=1682573537959', cat: 'Tranh chúc tụng', meaning: 'Gửi gắm triết lý về sự nhẫn nại, quý trọng những giá trị tốt đẹp của con người trong cuộc sống đời thường.' },
+            { id: 8, title: 'Đám Cưới Chuột', image: 'https://media-cdn-v2.laodong.vn/storage/newsportal/2020/1/20/779763/Dam-Cuoi-Chuot.jpg?w=660', cat: 'Tranh trào phúng', meaning: 'Phê phán sâu sắc chế độ phong kiến xưa thông qua hình ảnh chuột muốn cưới phải cống nạp cho mèo, thể hiện trí tuệ dân gian.' },
+            { id: 9, title: 'Đánh Ghen', image: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/%C4%90%C3%A1nh_ghen.JPG', cat: 'Tranh sinh hoạt', meaning: 'Phản ánh mâu thuẫn gia đình trong xã hội đa thê cũ, mang tính răn đe vừa hài hước vừa sâu cay về đạo đức lối sống.' },
+            { id: 10, title: 'Hứng Dừa', image: 'https://upload.wikimedia.org/wikipedia/commons/6/68/H%C3%A1i_d%E1%BB%ABa.JPG', cat: 'Tranh sinh hoạt', meaning: 'Khắc họa cảnh lao động vui vẻ, sự gắn kết giữa các thành viên trong gia đình nông thôn Việt Nam truyền thống.' },
+            { id: 11, title: 'Bịt Mắt Bắt Dê', image: 'https://dbnd.quangngai.gov.vn/items/cms/1047.jpg', cat: 'Tranh sinh hoạt', meaning: 'Mô tả trò chơi dân gian phổ biến, thể hiện tinh thần lạc quan và sức sống mãnh liệt của cộng đồng làng xã.' },
+            { id: 12, title: 'Trâu Sen', image: 'https://phapluat.tuoitrethudo.vn/stores/news_dataimages/phamhongmanh/022021/06/22/3938_Tranh_Dong_Ho.jpg?rt=20210206224211', cat: 'Tranh sinh hoạt', meaning: 'Hình ảnh em bé chăn trâu nằm thảnh thơi thổi sáo trên lưng trâu dưới lá sen, biểu tượng của sự bình yên và hòa hợp với thiên nhiên.' },
+            { id: 13, title: 'Bà Triệu', image: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhv9-dIBrolX-AcBmEv8Tm9iULxZ2BK6ftqCWXs4aC-R5DutN5hIg0Ifz36p6nMeByhyMkjk7DIsmAEIVSBzc4Pq-3FSJCldbI1t1swNFF_PrUmYCPNfmD32hfq5W_Q-_7mVMrt7IepKoRf/s1600/1.jpg', cat: 'Tranh lịch sử', meaning: 'Tôn vinh nữ anh hùng Triệu Thị Trinh cưỡi voi ra trận, khẳng định truyền thống yêu nước và sức mạnh bất khuất của phụ nữ Việt.' },
+            { id: 14, title: 'Quan Trạng Về Làng', image: 'https://tranhdangiandongho.vn/upload/files/2(1).jpg', cat: 'Tranh lịch sử', meaning: 'Vinh quy bái tổ thể hiện đạo lý "Uống nước nhớ nguồn" và tinh thần hiếu học của con người Việt Nam khi thành danh.' }
         ];
 
         const grid = document.getElementById('painting-grid');
 
-        paintings.forEach((p, index) => {
+        paintings.forEach((p) => {
             const card = document.createElement('div');
-            // Thêm hiệu ứng lắc lư nhẹ khi hover vào khối chứa tranh
-            card.className = "flex flex-col items-center relative group w-full hover:-translate-y-2 transition-transform duration-300";
-            
-            // Xoay ngẫu nhiên một góc rất nhỏ để tạo cảm giác treo tự nhiên
-            const randomRotation = (Math.random() - 0.5) * 3;
+            card.className = "flex flex-col items-center relative w-full transform transition-all duration-300 active:scale-90 cursor-pointer";
+            const randomRotation = (Math.random() - 0.5) * 2;
 
             card.innerHTML = `
-                <!-- Dây thừng treo tranh lên trần -->
-                <div class="absolute -top-[100px] left-[20%] h-[120px] rope"></div>
-                <div class="absolute -top-[100px] right-[20%] h-[120px] rope"></div>
+                <div class="absolute -top-[50px] sm:-top-[100px] left-[20%] h-[55px] sm:h-[105px] rope"></div>
+                <div class="absolute -top-[50px] sm:-top-[100px] right-[20%] h-[55px] sm:h-[105px] rope"></div>
 
-                <!-- Khung tranh -->
-                <button onclick="openModal(${p.id})" class="ancient-border p-3 sm:p-5 w-full active:scale-95 transition-transform" style="transform: rotate(${randomRotation}deg);">
+                <div onclick="openModal(${p.id})" class="ancient-border p-1 sm:p-5 w-full" style="transform: rotate(${randomRotation}deg);">
+                    <div class="absolute top-[2px] left-[20%] w-1 h-1 bg-black rounded-full z-20"></div>
+                    <div class="absolute top-[2px] right-[20%] w-1 h-1 bg-black rounded-full z-20"></div>
                     
-                    <!-- 2 Lỗ đinh đóng dây -->
-                    <div class="absolute top-2 left-[20%] w-2 h-2 sm:w-3 sm:h-3 bg-[#1a0500] rounded-full z-20 shadow-inner"></div>
-                    <div class="absolute top-2 right-[20%] w-2 h-2 sm:w-3 sm:h-3 bg-[#1a0500] rounded-full z-20 shadow-inner"></div>
-
-                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-[#f4ebd8] flex items-center justify-center border-2 border-[#3a1a0f]/20">
-                        <img src="${p.image}" alt="${p.title}" class="object-contain w-full h-full mix-blend-multiply" loading="lazy">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden bg-[#f4ebd8] flex items-center justify-center">
+                        <img src="${p.image}" alt="${p.title}" class="object-contain w-full h-full mix-blend-multiply">
                     </div>
-                    <div class="mt-4 border-t border-amber-950/20 pt-3 text-center bg-[#e8dbce]">
-                        <h3 class="text-lg sm:text-2xl font-black text-[#1a0f05] uppercase tracking-tighter">${p.title}</h3>
+                    
+                    <div class="mt-1 sm:mt-3 border-t border-amber-950/10 pt-1 text-center">
+                        <h3 class="text-[7px] sm:text-lg font-black text-[#1a0f05] uppercase truncate leading-none">${p.title}</h3>
                     </div>
-                </button>
+                </div>
             `;
             grid.appendChild(card);
         });
 
         function openModal(id) {
             const p = paintings.find(item => item.id === id);
+            if (!p) return;
+
             document.getElementById('modal-img').src = p.image;
             document.getElementById('modal-title').innerText = p.title;
-            document.getElementById('modal-cat').innerHTML = `<span class="w-6 h-[2px] bg-red-800"></span> ${p.cat}`;
+            document.getElementById('modal-cat').innerHTML = `<span class="w-4 h-[2px] bg-red-800"></span> ${p.cat}`;
             document.getElementById('modal-meaning').innerText = p.meaning;
+            
             document.getElementById('modal').classList.add('active');
             document.body.style.overflow = 'hidden';
-            document.querySelector('.modal-content-wrapper').scrollTop = 0;
         }
 
         function closeModal() {
